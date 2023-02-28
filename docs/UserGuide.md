@@ -6,7 +6,7 @@ title: User Guide
 FitBook is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fitbook can get your client management tasks done faster than traditional GUI apps.
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -25,15 +25,15 @@ FitBook is a **desktop app for managing clients, optimized for use via a Command
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-    * `list` : Lists all contacts.
+   * `list` : Lists all contacts.
 
-    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
-    * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-    * `clear` : Deletes all contacts.
+   * `clear` : Deletes all contacts.
 
-    * `exit` : Exits the app.
+   * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -52,7 +52,7 @@ FitBook is a **desktop app for managing clients, optimized for use via a Command
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -111,7 +111,7 @@ Format: `edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS w/WEIGHT
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the client will be removed i.e adding of tags is not cumulative.
 * You can remove all the client’s tags by typing `t/` without
-  specifying any tags after it.
+    specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st client to be `91234567` and `johndoe@example.com` respectively.
@@ -184,57 +184,57 @@ If your changes to the data file makes its format invalid, FitBook will discard 
 _Details coming soon ..._
 ///PLACE HOLDER OUR ACTUAL FEATURE LIST////
 1.	Adding new client
-      Add a new customer profile: addClient
-      Format: addClient c/CLIENT_NAME p/PHONE_NUMBER add/ADDRESS [appt/APPOINTMENT_TIME] [w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
+Add a new customer profile: addClient
+Format: addClient c/CLIENT_NAME p/PHONE_NUMBER add/ADDRESS [appt/APPOINTMENT_TIME] [w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
 
 Example:
 •	addClient c/Lisa p/95230245 cal/2000 w/50 r/1,2,3
 
 2.	Removing a client: removeClient
-      Removes a client profile.
-      Format: removeClient c/CLIENT_NAME
+Removes a client profile.
+Format: removeClient c/CLIENT_NAME
 
 Examples:
 •	removeClient c/Lisa
 
 3.	Editing client information
-      Edits client details (e.g. phone number)
-      Format: editClient c/CLIENT_NAME [p/PHONE_NUMBER] [add/ADDRESS] [appt/APPOINTMENT_TIME]
-      [w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
-      `
-      Examples:
-      •	editClient c/Lisa p/95230245
+Edits client details (e.g. phone number)
+Format: editClient c/CLIENT_NAME [p/PHONE_NUMBER] [add/ADDRESS] [appt/APPOINTMENT_TIME]
+[w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
+`
+Examples:
+•	editClient c/Lisa p/95230245
 
 4.	Finding client by name
-      Locates client
-      Format: findClient c/CLIENT_NAME
+Locates client
+Format: findClient c/CLIENT_NAME
 
 Examples:
 •	findClient c/Lisa
 
 5.	Listing all clients: listClients
-      Lists all clients added. “Change tab to clients”.
-      Format: listClients
+Lists all clients added. “Change tab to clients”.
+Format: listClients
 
 6.	Listing all the routines: listRoutines
-      Lists all routines added. “Change tab to lists”.
-      Format: listRoutines
+Lists all routines added. “Change tab to lists”.
+Format: listRoutines
 
 7.	Exiting the app
-      Exits the program.
-      Format: logout
+Exits the program.
+Format: logout
 
 8.	Creating an exercise routine: createRoutine
-      Creates an empty exercise routine to the list of exercise routines.
-      Format: createRoutine n/EXERCISE_ROUTINE_NAME
+Creates an empty exercise routine to the list of exercise routines.
+Format: createRoutine n/EXERCISE_ROUTINE_NAME
 
 Examples:
 •	createRoutine n/Slimming Exercise
 •	createRoutine n/Cardio Exercise
 
 9.	Saving exercise routines: saveExercise
-      Saves an exercise routine to the FitBook.
-      Format: saveExercise e/EXERCISE_NUMBER r/ROUTINE_NUMBER n/ROUTINE [t/DURATION_OR_REPS][s/SETS]
+Saves an exercise routine to the FitBook.
+Format: saveExercise e/EXERCISE_NUMBER r/ROUTINE_NUMBER n/ROUTINE [t/DURATION_OR_REPS][s/SETS]
 
 Examples:
 •	saveExercise e/3 r/2 n/Dumbbell curls t/20 s/3
@@ -242,23 +242,23 @@ Examples:
 •	saveExercise e/1 r/1 n/Treadmill Sprint t/10 minutes
 
 10.	Showing the list of exercise routines: listRoutines
-       Shows the list of exercise routines in the fitbook.
-       Format: listRoutines [f/SEARCH]
+Shows the list of exercise routines in the fitbook.
+Format: listRoutines [f/SEARCH]
 
 Examples:
 •	listRoutines
 •	listRoutines f/Cardio
 
 11.	Tagging the exercise routine to each client: tagExercise
-       Tags an exercise routine to each client in the fitbook.
-       Format: tagExercise p/PERSON_INDEX_IN_THE_LIST e/EXERCISE_INDEX_IN_THE_EXERCISE_LIST
+Tags an exercise routine to each client in the fitbook.
+Format: tagExercise p/PERSON_INDEX_IN_THE_LIST e/EXERCISE_INDEX_IN_THE_EXERCISE_LIST
 
 Examples:
 •	tagExercise p/2 e/3
 
 12.	  Filtering clients by exercises: filterExercise
-         Filters and shows the clients by their routine.
-         Format: filterExercise e/EXERCISE_NAME
+Filters and shows the clients by their routine.
+Format: filterExercise e/EXERCISE_NAME
 
 Examples:
 •	filterExercise e/Cardio
@@ -269,23 +269,23 @@ Filters and shows the clients by gender.
 Format: filterGender g/GENDER
 
 13.	Marking the exercise of a client’s routine as done: markExercise
-       Marks the exercise of a client’s routine as done.
-       markExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
+Marks the exercise of a client’s routine as done.
+markExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
 
 Example:
 •	markExercise p/2 r/1 e/3
 
 14.	Unmarking the exercise of a client’s routine as not done: unmarkExercise
-       Unmarks the exercise of a client’s routine as not done.
-       unmarkExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
+Unmarks the exercise of a client’s routine as not done.
+unmarkExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
 
 Example:
 •	unmarkExercise p/2 r/1 e/3
 
 15.	Unmarking all the exercise of a client’s routine as not done:
-       unmarkAllExercise
-       Unmarks all the exercise of a client’s routine as not done.
-       unmarkAllExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER
+unmarkAllExercise
+Unmarks all the exercise of a client’s routine as not done.
+unmarkAllExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER
 
 Example:
 •	unmarkAllExercise p/1 r/3
