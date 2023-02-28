@@ -92,9 +92,12 @@ Examples:
 
 ### Listing all clients : `list`
 
-Shows a list of all clients in the FitBook.
+Displays a list of all clients in the FitBook.
 
-Format: `list`
+Format: `listClients`
+
+* Initiate the command with 'listClients'
+* All clients in FitBook has been listed once again!
 
 ### Editing a client : `edit`
 
