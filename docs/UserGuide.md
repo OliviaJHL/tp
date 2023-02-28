@@ -6,7 +6,7 @@ title: User Guide
 FitBook is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fitbook can get your client management tasks done faster than traditional GUI apps.
 
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -25,15 +25,15 @@ FitBook is a **desktop app for managing clients, optimized for use via a Command
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `clear` : Deletes all contacts.
+    * `clear` : Deletes all contacts.
 
-   * `exit` : Exits the app.
+    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -52,7 +52,7 @@ FitBook is a **desktop app for managing clients, optimized for use via a Command
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -103,34 +103,41 @@ Format: `listClients`
 
 Edits an existing client in the FitBook.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS w/WEIGHT
+[cal/RECOMMENDED_CALORIES_INTAKE] [g/GOAL] [r/Routines] [g/gender] [app/APPOINTMENT_TIME] [t/TAG]…​`
 
 * Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed client list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the client will be removed i.e adding of tags is not cumulative.
 * You can remove all the client’s tags by typing `t/` without
-    specifying any tags after it.
+  specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st client to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd client to be `Betsy Crower` and clears all existing tags.
+*  `edit 3 w/23.0` Edits the weight of the 3rd client to `23.0`.
+*  `edit 4 w/25.0 g/m` Edits the weight and gender of the 4th client to `25.0` and `m`.
 
 ### Locating clients by name: `find`
 
-Finds clients whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Finds Clients in Fitbook whose names contain any of the given keywords.
+
+
+Format: `find KEYWORD [MORE KEYWORDS] [p/PHONE] [e/EMAIL] [a/ADDRESS] [w/WEIGHT] [g/GENDER]…​`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
+* Only keyword for name is compulsory in the command. The inclusion of other information is optional.
+  e.g. `find Hans` and `find Hans p/91234567` will work but `find p/91234567` will not work.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Clients matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
 * `find John` returns `john` and `John Doe`
+* `find John p/91234567` returns `John Tan`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
@@ -177,57 +184,57 @@ If your changes to the data file makes its format invalid, FitBook will discard 
 _Details coming soon ..._
 ///PLACE HOLDER OUR ACTUAL FEATURE LIST////
 1.	Adding new client
-Add a new customer profile: addClient
-Format: addClient c/CLIENT_NAME p/PHONE_NUMBER add/ADDRESS [appt/APPOINTMENT_TIME] [w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
+      Add a new customer profile: addClient
+      Format: addClient c/CLIENT_NAME p/PHONE_NUMBER add/ADDRESS [appt/APPOINTMENT_TIME] [w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
 
 Example:
 •	addClient c/Lisa p/95230245 cal/2000 w/50 r/1,2,3
 
 2.	Removing a client: removeClient
-Removes a client profile.
-Format: removeClient c/CLIENT_NAME
+      Removes a client profile.
+      Format: removeClient c/CLIENT_NAME
 
 Examples:
 •	removeClient c/Lisa
 
 3.	Editing client information
-Edits client details (e.g. phone number)
-Format: editClient c/CLIENT_NAME [p/PHONE_NUMBER] [add/ADDRESS] [appt/APPOINTMENT_TIME]
-[w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
-`
-Examples:
-•	editClient c/Lisa p/95230245
+      Edits client details (e.g. phone number)
+      Format: editClient c/CLIENT_NAME [p/PHONE_NUMBER] [add/ADDRESS] [appt/APPOINTMENT_TIME]
+      [w/WEIGHT] [cal/TARGET_CALORIES_INTAKE][g/ GOAL] [r/Routines] [g/gender]
+      `
+      Examples:
+      •	editClient c/Lisa p/95230245
 
 4.	Finding client by name
-Locates client
-Format: findClient c/CLIENT_NAME
+      Locates client
+      Format: findClient c/CLIENT_NAME
 
 Examples:
 •	findClient c/Lisa
 
 5.	Listing all clients: listClients
-Lists all clients added. “Change tab to clients”.
-Format: listClients
+      Lists all clients added. “Change tab to clients”.
+      Format: listClients
 
 6.	Listing all the routines: listRoutines
-Lists all routines added. “Change tab to lists”.
-Format: listRoutines
+      Lists all routines added. “Change tab to lists”.
+      Format: listRoutines
 
 7.	Exiting the app
-Exits the program.
-Format: logout
+      Exits the program.
+      Format: logout
 
 8.	Creating an exercise routine: createRoutine
-Creates an empty exercise routine to the list of exercise routines.
-Format: createRoutine n/EXERCISE_ROUTINE_NAME
+      Creates an empty exercise routine to the list of exercise routines.
+      Format: createRoutine n/EXERCISE_ROUTINE_NAME
 
 Examples:
 •	createRoutine n/Slimming Exercise
 •	createRoutine n/Cardio Exercise
 
 9.	Saving exercise routines: saveExercise
-Saves an exercise routine to the FitBook.
-Format: saveExercise e/EXERCISE_NUMBER r/ROUTINE_NUMBER n/ROUTINE [t/DURATION_OR_REPS][s/SETS]
+      Saves an exercise routine to the FitBook.
+      Format: saveExercise e/EXERCISE_NUMBER r/ROUTINE_NUMBER n/ROUTINE [t/DURATION_OR_REPS][s/SETS]
 
 Examples:
 •	saveExercise e/3 r/2 n/Dumbbell curls t/20 s/3
@@ -235,23 +242,23 @@ Examples:
 •	saveExercise e/1 r/1 n/Treadmill Sprint t/10 minutes
 
 10.	Showing the list of exercise routines: listRoutines
-Shows the list of exercise routines in the fitbook.
-Format: listRoutines [f/SEARCH]
+       Shows the list of exercise routines in the fitbook.
+       Format: listRoutines [f/SEARCH]
 
 Examples:
 •	listRoutines
 •	listRoutines f/Cardio
 
 11.	Tagging the exercise routine to each client: tagExercise
-Tags an exercise routine to each client in the fitbook.
-Format: tagExercise p/PERSON_INDEX_IN_THE_LIST e/EXERCISE_INDEX_IN_THE_EXERCISE_LIST
+       Tags an exercise routine to each client in the fitbook.
+       Format: tagExercise p/PERSON_INDEX_IN_THE_LIST e/EXERCISE_INDEX_IN_THE_EXERCISE_LIST
 
 Examples:
 •	tagExercise p/2 e/3
 
 12.	  Filtering clients by exercises: filterExercise
-Filters and shows the clients by their routine.
-Format: filterExercise e/EXERCISE_NAME
+         Filters and shows the clients by their routine.
+         Format: filterExercise e/EXERCISE_NAME
 
 Examples:
 •	filterExercise e/Cardio
@@ -262,23 +269,23 @@ Filters and shows the clients by gender.
 Format: filterGender g/GENDER
 
 13.	Marking the exercise of a client’s routine as done: markExercise
-Marks the exercise of a client’s routine as done.
-markExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
+       Marks the exercise of a client’s routine as done.
+       markExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
 
 Example:
 •	markExercise p/2 r/1 e/3
 
 14.	Unmarking the exercise of a client’s routine as not done: unmarkExercise
-Unmarks the exercise of a client’s routine as not done.
-unmarkExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
+       Unmarks the exercise of a client’s routine as not done.
+       unmarkExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER e/EXERCISE_NUMBER
 
 Example:
 •	unmarkExercise p/2 r/1 e/3
 
 15.	Unmarking all the exercise of a client’s routine as not done:
-unmarkAllExercise
-Unmarks all the exercise of a client’s routine as not done.
-unmarkAllExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER
+       unmarkAllExercise
+       Unmarks all the exercise of a client’s routine as not done.
+       unmarkAllExercise p/PERSON_INDEX_IN_THE_LIST r/ROUTINE_NUMBER
 
 Example:
 •	unmarkAllExercise p/1 r/3
@@ -295,12 +302,14 @@ Example:
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                                                                                                                                                                                          |
-|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS w/WEIGHT [cal/RECOMMENDED_CALORIES_INTAKE] [g/GOAL] [r/Routines] [g/gender] [app/APPOINTMENT_TIME]…​ [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague app/10-10-2023` |
-| **Clear**  | `clear`                                                                                                                                                                                                                                                                                   |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                       |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                                               |
-| **Find**   | `find KEYWORD [MORE KEYWORDS] [p/PHONE] [e/EMAIL] [a/ADDRESS] [w/WEIGHT] [g/GENDER]…​`<br> e.g., `find James Jake p/91234567 e/jamesjake@example.com`                                                                                                                                                                                                                               |
-| **List**   | `listClients`                                                                                                                                                                                                                                                                             |
-| **Help**   | `help`                                                                                                                                                                                                                                                                                    |
+
+| Action     | Format, Examples                                                                                                                                                      |
+|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear**  | `clear`                                                                                                                                                               |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Find**   | `find KEYWORD [MORE KEYWORDS] [p/PHONE] [e/EMAIL] [a/ADDRESS] [w/WEIGHT] [g/GENDER]…​`<br> e.g., `find James Jake p/91234567 e/jamesjake@example.com`                 |
+| **List**   | `listClients`                                                                                                                                                         |
+| **Help**   | `help`                                                                                                                                                                |
+
